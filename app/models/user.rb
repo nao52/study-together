@@ -4,4 +4,6 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   has_secure_password
+  validates :goal, length: { maximum: 255 }
+  validates :status, length: { maximum: 255 }
 end
