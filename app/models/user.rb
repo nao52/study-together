@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_secure_password
   validates :goal, length: { maximum: 255 }
   validates :status, length: { maximum: 255 }
+  
+  has_many :posts
 end

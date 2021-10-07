@@ -4,10 +4,7 @@
       <li class="media">
         <div class="media-body">
           <div>
-            <%= user.name %>
-          </div>
-          <div>
-            <p><%= link_to 'View profile', user_path(user) %></p>
+            <p><%= link_to user.name, user_path(user) %></p>
           </div>
         </div>
       </li>
