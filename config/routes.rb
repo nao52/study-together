@@ -7,7 +7,13 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   get 'toppage', to: 'toppages#index'
-  resources :users
+  resources :users do
+    member do
+      get :followings
+      get :followers
+    end
+  end
   
   resources :posts
+  resources :relationships, only: [:create, :destroy]
 end
