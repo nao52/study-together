@@ -24,7 +24,7 @@
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り</a></li>
     </ul>
     <div class="row m-3">
-      <%= render 'posts/posts', posts: @posts %>
+      <%= render 'posts/posts', posts: @likes %>
     </div>
   </div>
 </div>

@@ -5,6 +5,8 @@
         <div class="media-body">
           <div>
             <p><%= link_to user.name, user_path(user) %></p>
+            <p>目標：<%= user.goal %></p>
+            <p>プロフィール：<%= user.status %></p>
           </div>
           <div> 
             <%= render 'relationships/follow_button', user: user %>

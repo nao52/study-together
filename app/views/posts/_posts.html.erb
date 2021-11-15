@@ -8,16 +8,21 @@
         <div>
           <p><%= post.content %></p>
         </div>
-        <span>
-          <% if current_user == post.user %>
-            <%= link_to "編集", edit_post_path(post), class: 'btn btn-primary btn-sm' %>
-          <% end %>
-        </span>
-        <span>
-          <% if current_user == post.user %>
-            <%= link_to "消去", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
-        </span>
+        <div class="row">
+          <span>
+            <%= render 'favorites/favorite_button', post: post %>
+          </span>
+          <span class="ml-1">
+            <% if current_user == post.user %>
+              <%= link_to "編集", edit_post_path(post), class: 'btn btn-primary btn-sm' %>
+            <% end %>
+          </span>
+          <span class="ml-1">
+            <% if current_user == post.user %>
+              <%= link_to "消去", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </span>
+        </div>
       </div>
     </li>
   <% end %>
