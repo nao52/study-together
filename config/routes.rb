@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :posts
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resources :groups
 end
