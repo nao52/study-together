@@ -30,7 +30,7 @@
       <li class="nav-item"><a href="<%= joinings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(joinings_user_path(@user)) %>">参加グループ</a></li>
     </ul>
     <div class="row m-3">
-      <%= render 'posts/posts', posts: @likes %>
+      <%= render 'groups/groups', groups: @joinings %>
     </div>
   </div>
 </div>

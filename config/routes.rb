@@ -12,11 +12,18 @@ Rails.application.routes.draw do
       get :followings
       get :followers
       get :likes
+      get :joinings
+    end
+  end
+  
+  resources :groups do
+    member do
+      get :joineds
     end
   end
   
   resources :posts
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
-  resources :groups
+  resources :group_users, only: [:create, :destroy]
 end

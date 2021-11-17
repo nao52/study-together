@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit, :followings, :followers]
   before_action :correct_user, only: [:edit, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :followings, :followers, :likes]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :followings, :followers, :likes, :joinings]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -58,6 +58,10 @@ class UsersController < ApplicationController
   
   def likes
     @likes = @user.likes.page(params[:page])
+  end
+  
+  def joinings
+    @joinings = @user.joinings.page(params[:page])
   end
 
   private

@@ -1,8 +1,13 @@
 class GroupsController < ApplicationController
   before_action :require_user_logged_in
+  before_action :correct_user, only: [:edit, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :joineds]
   
   def index
     @groups = Group.order(id: :desc).page(params[:page]).per(25)
+  end
+  
+  def show
   end
   
   def new
@@ -22,12 +27,9 @@ class GroupsController < ApplicationController
   end
   
   def edit
-    @group = Group.find(params[:id])
   end
   
   def update
-    @group = Group.find(params[:id])
-
     if @group.update(group_params)
       flash[:success] = 'グループ名は正常に更新されました'
       redirect_to groups_url
@@ -38,15 +40,29 @@ class GroupsController < ApplicationController
   end
   
   def destroy
-    @group = Group.find(params[:id])
     @group.destroy
     flash[:success] = 'グループを削除しました。'
     redirect_back(fallback_location: root_path)
   end
   
+  def joineds
+    @joineds = @group.joineds.page(params[:page])
+  end
+  
   private
+  
+  def set_group
+    @group = Group.find(params[:id])
+  end
 
   def group_params
     params.require(:group).permit(:name)
+  end
+  
+  def correct_user
+    @group = current_user.groups.find_by(id: params[:id])
+    unless @group
+      redirect_to root_url
+    end
   end
 end

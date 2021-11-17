@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :likes, through: :favorites, source: :post
   has_many :groups
+  has_many :group_users
+  has_many :joinings, through: :group_users, source: :group
 
   def follow(other_user)
     unless self == other_user
@@ -46,5 +48,18 @@ class User < ApplicationRecord
 
   def likes?(post)
     self.likes.include?(post)
+  end
+  
+  def join(group)
+    self.group_users.find_or_create_by(group_id: group.id)
+  end
+  
+  def unjoin(group)
+    join = self.group_users.find_by(group_id: group.id)
+    join.destroy if join
+  end
+  
+  def joinings?(group)
+    self.joinings.include?(group)
   end
 end

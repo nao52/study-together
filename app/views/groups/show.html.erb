@@ -1,0 +1,16 @@
+<div class="row border p-3">
+  <aside class="col-2">
+    <%= render 'layouts/link_list' %>
+  </aside>
+  <div class="col-10 border-left">
+    <h4 class="text-center">【参加グループ：<%= @group.name %>】</h4>
+    <ul class="nav nav-pills nav-justified mb-3">
+      <li class="nav-item"><a href="<%= group_path(@group) %>" class="nav-link <%= 'active' if current_page?(group_path(@group)) %>">投稿一覧</a></li>
+      <li class="nav-item"><a href="<%= joineds_group_path(@group) %>" class="nav-link <%= 'active' if current_page?(joineds_group_path(@group)) %>">参加ユーザ一覧</a></li>
+    </ul>
+    <div>
+      <div class="row col-10">
+      </div>
+    </div>
+  </div>
+</div>

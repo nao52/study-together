@@ -1,10 +1,10 @@
 <div class="row border p-3">
-  <aside class="col-sm-2 border">
+  <aside class="col-sm-2">
     <ul class="list-unstyled mt-3">
       <%= render 'layouts/link_list' %>
     </ul>
   </aside>
-  <div class="col-sm-10 border">
+  <div class="col-sm-10 border-left">
     <ul class="nav nav-pills nav-justified mb-3">
       <li class="nav-item"><a href="<%= posts_path %>" class="nav-link <%= 'active' if current_page?(posts_path) %>">投稿一覧</a></li>
       <li class="nav-item"><a href="<%= users_path %>" class="nav-link <%= 'active' if current_page?(users_path) %>">ユーザ一覧</a></li>
