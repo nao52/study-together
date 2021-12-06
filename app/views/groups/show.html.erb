@@ -9,7 +9,18 @@
       <li class="nav-item"><a href="<%= joineds_group_path(@group) %>" class="nav-link <%= 'active' if current_page?(joineds_group_path(@group)) %>">参加ユーザ一覧</a></li>
     </ul>
     <div>
-      <div class="row col-10">
+      <div class="row m-1">
+        <%= form_with(model: @post, local: true) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :content, class: 'form-control', rows: 5, cols: 100 %>
+          </div>
+          <div class="row offset-11">
+            <div>
+              <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+            </div>
+          </div>
+          <% end %>
+        <%= render 'posts/posts', posts: @posts %>
       </div>
     </div>
   </div>

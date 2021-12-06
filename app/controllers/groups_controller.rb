@@ -8,6 +8,8 @@ class GroupsController < ApplicationController
   end
   
   def show
+    @post = GroupPost.new
+    @posts = @group.group_posts.order(id: :desc).page(params[:page])
   end
   
   def new
@@ -20,7 +22,7 @@ class GroupsController < ApplicationController
       flash[:success] = 'グループを作成しました。'
       redirect_to groups_url
     else
-      @groups = current_user.group.order(id: :desc).page(params[:page])
+      @groups = current_user.groups.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'グループの作成に失敗しました。'
       render 'groups/new'
     end

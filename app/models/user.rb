@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :groups
   has_many :group_users
   has_many :joinings, through: :group_users, source: :group
+  has_many :group_posts
 
   def follow(other_user)
     unless self == other_user

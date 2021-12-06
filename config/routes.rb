@@ -19,10 +19,12 @@ Rails.application.routes.draw do
   resources :groups do
     member do
       get :joineds
+      resources :group_posts, only: [:create, :destroy]
     end
   end
   
   resources :posts
+  resources :group_posts, only: [:new]
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :group_users, only: [:create, :destroy]
