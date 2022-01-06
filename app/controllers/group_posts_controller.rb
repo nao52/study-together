@@ -4,7 +4,7 @@ class GroupPostsController < ApplicationController
   
   def create
     @group = Group.find(params[:id])
-    @post = @group.group_posts.new(group_post_params)
+    @post = @group.group_posts.build(group_post_params)
     if @post.save
       flash[:success] = 'メッセージを投稿しました。'
       redirect_back(fallback_location: root_path)
@@ -15,6 +15,12 @@ class GroupPostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.destroy
+    flash[:success] = 'メッセージを削除しました。'
+    redirect_back(fallback_location: root_path)
+  end
+
   private
   
   def group_post_params
@@ -22,7 +28,7 @@ class GroupPostsController < ApplicationController
   end
   
   def correct_user
-    @post = current_user.posts.find_by(id: params[:id])
+    @post = current_user.group_posts.find_by(id: params[:id])
     unless @post
       redirect_to root_url
     end

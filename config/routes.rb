@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :groups do
     member do
       get :joineds
-      resources :group_posts, only: [:create, :destroy]
+      resources :group_posts, only: [:create, :edit, :destroy]
     end
   end
   

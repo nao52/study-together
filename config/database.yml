@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: study-together_production
   username: study-together
   password: <%= ENV['STUDY-TOGETHER_DATABASE_PASSWORD'] %>

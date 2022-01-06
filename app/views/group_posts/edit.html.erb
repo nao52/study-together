@@ -1,0 +1,13 @@
+<%= form_with(model: @post, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: 'form-control', rows: 5 %>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 offset-sm-8">
+      <%= link_to 'キャンセル', group_path(@group), class: "btn btn-link btn-block" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+    </div>
+  </div>
+<% end %>

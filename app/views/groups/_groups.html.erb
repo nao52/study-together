@@ -1,9 +1,10 @@
 <ul class="list-unstyled">
   <% groups.each do |group| %>
-    <li class="media border-bottom">
+    <li class="media border-bottom pb-2 pt-2">
       <div class="media-body">
         <div>
-          <%= link_to group.name, group_path(group) %>
+          <p><%= link_to group.name, group_path(group) %></p>
+          <p>グループ詳細：<%= group.content %></p>
         </div>
         <div class="row mt-3">
           <span class="ml-3">

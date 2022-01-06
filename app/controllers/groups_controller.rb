@@ -8,8 +8,8 @@ class GroupsController < ApplicationController
   end
   
   def show
-    @post = GroupPost.new
-    @posts = @group.group_posts.order(id: :desc).page(params[:page])
+    @grouppost = @group.group_posts.build 
+    @groupposts = @group.group_posts.order(id: :desc).page(params[:page]).per(25)
   end
   
   def new
@@ -58,7 +58,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name)
+    params.require(:group).permit(:name, :content)
   end
   
   def correct_user
